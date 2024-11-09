@@ -1,0 +1,32 @@
+from .base import *
+
+DEBUG = False
+
+# Database connection
+CONN_MAX_AGE = None
+CONN_HEALTH_CHECKS = True
+
+# Rest Framework settings
+REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = [
+    'rest_framework.renderers.JSONRenderer',
+]
+
+# Security settings & CORS
+X_FRAME_OPTIONS = 'SAMEORIGIN'  # 'DENY', 'SAMEORIGIN'
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_HSTS_SECONDS = 31536000
+SECURE_HSTS_PRELOAD = True
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_SSL_REDIRECT = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SESSION_COOKIE_SECURE = True  # TODO HTTP Login error
+SESSION_COOKIE_SAMESITE = 'strict'
+SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
+CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_SAMESITE = 'strict'
+CSRF_TRUSTED_ORIGINS = []
+SECURE_REFERRER_POLICY = 'strict-origin-when-cross-origin'
+
+CORS_ALLOW_ALL_ORIGINS = False
+CORS_ORIGIN_WHITELIST = []
